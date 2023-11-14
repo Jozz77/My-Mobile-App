@@ -1,48 +1,74 @@
 import React, { useState } from "react";
-import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Alert,
+  Button,
+  FlatList,
+  Keyboard,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
+import Header from "./components/Header";
+import TodoItem from "./components/TodoItem";
+import AddTodo from "./components/addTodo";
 
 const YourApp = () => {
-  const [todo, setTodo] = useState([
-    { name: "Mellon", key: 1 },
-    { name: "Goody", key: 2 },
-    { name: "Sonny", key: 3 },
-    { name: "Marion", key: 4 },
-    { name: "rob", key: 5 },
-    { name: "now", key: 6 },
+  const [todos, setTodos] = useState([
+    { name: "Mellon is drinking", key: 1 },
+    { name: "Goody is playing", key: 2 },
+    { name: "Sonny is good", key: 3 },
+    { name: "Marion was bad", key: 4 },
+    { name: "rob is nice", key: 5 },
+    { name: "now or never", key: 6 },
   ]);
 
-  // const changeName = () => {
-  //   setName("Jonathan");
-  // };
+  const pressButton = (key) => {
+    setTodos((prevTodos) => {
+      return prevTodos.filter(todo => todo.key != key)
+    })
+  };
+  const submitHandler = (text) => {
+   if (text.length > 3) {
+    setTodos((prevTodos) => {
+      return [
+        {name: text, key: Math.random().toString()},
+        ...prevTodos
+      ]
+    })
+   } else {
+    Alert.alert("Ohhh!", "Your character is too short"), [
+      {text: 'Yeah', onPress: () => console.log('alert closed')}
+    ]
+   }
+  }
+
   return (
-    <View style={styles.container}>
+   <TouchableWithoutFeedback onPress={() => {
+    Keyboard.dismiss
+   }}>
+     <View style={styles.container}>
       {/* header */}
+      <Header />
       <View></View>
 
       {/* content */}
       <View style={styles.content}>
-
+        <AddTodo submitHandler={submitHandler}/>
+        <View style={styles.list} >
+          {/* flatlist */}
+          <FlatList
+            data={todos}
+            renderItem={({ item }) => (
+              <TodoItem item={item  } pressButton={pressButton} />
+            )}
+          />
+        </View>
       </View>
-      <TextInput
-        style={styles.input}
-        placeholder="new text"
-        onChangeText={(newName) => setName(newName)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="new text"
-        keyboardType="numeric"
-        onChangeText={(myAge) => setAge(myAge)}
-      />
-
-      {/* flatlist */}
-      <FlatList 
-      data={guys}
-      renderItem={({ item }) => (
-        <Text style={styles.guy}>{item.name}</Text>
-      )}
-      />
     </View>
+   </TouchableWithoutFeedback>
   );
 };
 
@@ -51,29 +77,21 @@ export default YourApp;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "pink",
+    // justifyContent: "center",
+    // alignItems: "center",
+    // backgroundColor: "pink",
+    paddingVertical: 40,
   },
-  text: {
-    color: "#b43654",
-    fontSize: 20,
+  content: {
     padding: 10,
   },
-  guy: {
+  todo: {
     color: "blue",
-    fontSize: 30,
-    paddingHorizontal: 100,
-    paddingVertical: 20,
-    marginVertical: 20,
-    backgroundColor: "red"
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "black",
-    width: 300,
-    margin: 10,
-    padding: 7,
-    borderRadius: 6,
+    fontSize: 20,
+    marginTop: 10,
+    // paddingHorizontal: 100,
+    // paddingVertical: 20,
+    // marginVertical: 20,
+    // backgroundColor: "red",
   },
 });
