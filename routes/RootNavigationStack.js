@@ -3,6 +3,9 @@ import { HomeStack } from "./homeStack";
 import { AboutStack } from "./AboutStack";
 import Home from "../screens/Home";
 import About from "../screens/About";
+import HeaderTest from "../HeaderTest";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { AntDesign } from '@expo/vector-icons'; 
 
 const Drawer = createDrawerNavigator();
 
@@ -21,20 +24,28 @@ export function RootNavigationStack() {
       }}
     >
       <Drawer.Screen
-        name="Home"
-        component={Home}
+        name="HomeStack"
+        component={HomeStack}
+        
         options={{
-          title: "My Home",
-          headerStyle: {
-            backgroundColor: "#2ecc71", // Set your header background color for About
-          },
-          headerTintColor: "#fff", // Set your header text color for About
-          headerTitleStyle: {
-            fontWeight: "bold",
-          },
+          headerTitle: () => <HeaderTest />,
+      headerTitleAlign: 'left',
+          // headerStyle: {
+          //   backgroundColor: "#2ecc71",
+          //    // Set your header background color for About
+          // },
+          // headerTintColor: "#fff", // Set your header text color for About
+          // headerTitleStyle: {
+          //   fontWeight: "bold",
+          // },
+          // headerLeft: () => (
+          //   <TouchableOpacity onPress={() => navigation.openDrawer()}>
+          //     <AntDesign name="delete" size={20} color="black" />
+          //   </TouchableOpacity>
+          // ),
         }}
       />
-      <Drawer.Screen name="About" component={About} />
+      <Drawer.Screen name="AboutStack" component={AboutStack} />
     </Drawer.Navigator>
   );
 }

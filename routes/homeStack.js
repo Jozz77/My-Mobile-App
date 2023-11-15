@@ -23,19 +23,10 @@ export const HomeStack = () => {
       <Stack.Screen
         name="Home"
         component={Home}
-        options={{ 
-            title: "My Home",
-            headerStyle: {
-                backgroundColor: "#2ecc71", // Set your header background color for About
-              },
-              headerTintColor: "#fff", // Set your header text color for About
-              headerTitleStyle: {
-                fontWeight: "bold",
-              }
-        }}
+        options={{ headerShown: false }}
       />
       {/* <Stack.Screen name="About" component={About} /> */}
-      <Stack.Screen name="Review" component={Review} />
+      <Stack.Screen name="Review"  component={Review} />
       <Stack.Screen name="Todo" component={Todo} />
     </Stack.Navigator>
   );
