@@ -6,7 +6,7 @@ export const GlobalStyles = StyleSheet.create({
     },
     text: {
         fontFamily: 'nunito-semibold', 
-        fontSize: 20,
+        fontSize: 16,
         color: 'blue'
     },
     paragraph: {

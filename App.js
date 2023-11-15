@@ -5,8 +5,9 @@ import { StyleSheet, Text, View } from "react-native";
 // import Home from "./screens/Home";
 import { useFonts } from 'expo-font';
 import * as SplashScreen from 'expo-splash-screen';
-import { MyScreens } from "./routes/homeStack";
+import { HomeStack} from "./routes/homeStack";
 import { NavigationContainer } from '@react-navigation/native';
+import { RootNavigationStack } from './routes/RootNavigationStack';
 
 const YourApp = () => {
   const [fontsLoaded, fontError] = useFonts({
@@ -27,7 +28,8 @@ const YourApp = () => {
   return (
     
       <NavigationContainer onLayout={onLayoutRootView}>
-        <MyScreens />
+        <RootNavigationStack />
+        {/* <HomeStack /> */}
       </NavigationContainer>
   );
 };

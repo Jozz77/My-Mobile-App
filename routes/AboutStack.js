@@ -6,7 +6,7 @@ import Todo from "../Todo";
 
 const Stack = createStackNavigator();
 
-export const HomeStack = () => {
+export const AboutStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
@@ -21,10 +21,10 @@ export const HomeStack = () => {
       }}
     >
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="About"
+        component={About}
         options={{ 
-            title: "My Home",
+            title: "Your Home Title",
             headerStyle: {
                 backgroundColor: "#2ecc71", // Set your header background color for About
               },
@@ -34,9 +34,9 @@ export const HomeStack = () => {
               }
         }}
       />
-      {/* <Stack.Screen name="About" component={About} /> */}
+      {/* <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="Review" component={Review} />
-      <Stack.Screen name="Todo" component={Todo} />
+      <Stack.Screen name="Todo" component={Todo} /> */}
     </Stack.Navigator>
   );
 };
