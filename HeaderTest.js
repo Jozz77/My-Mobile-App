@@ -6,7 +6,7 @@ import { GlobalStyles } from './styles/GlobalStyles'
 export default function HeaderTest() {
   return (
     <View style={GlobalStyles.header}>
-      <Text style={GlobalStyles.text}>New Headers</Text>
+      <Text style={GlobalStyles.headerText}>Gamezone</Text>
     </View>
   )
 }

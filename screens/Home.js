@@ -12,6 +12,7 @@ import { GlobalStyles } from "../styles/GlobalStyles";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import Card from "./Card";
 import { AntDesign } from "@expo/vector-icons";
+import ReviewForm from "./reviewForm";
 
 export default function Home({ navigation }) {
   const [reviews, setReviews] = useState([
@@ -41,6 +42,22 @@ export default function Home({ navigation }) {
     },
   ]);
 
+  const addReviews = (review) => {
+    reviews.key = Math.random().toString();
+    setReviews((currentReview) => (
+      [review, ...currentReview]
+    ))
+    setOpenModal(false)
+  }
+  // const addReviews = (newReview) => {
+  //   setReviews((currentReviews) => [
+  //     { ...newReview, key: Math.random().toString() },
+  //     ...currentReviews,
+  //   ]);
+  //   setOpenModal(false);
+  // };
+  
+
   const [openModal, setOpenModal] = useState(false);
 
   return (
@@ -55,9 +72,7 @@ export default function Home({ navigation }) {
       </View> */}
 
       <Modal visible={openModal} animationType="slide">
-        <View>
-          <Text>Hey, I'm a modal</Text>
-        </View>
+        <View style={styles.modalContent}>
         <AntDesign
           name="close"
           size={24}
@@ -65,6 +80,11 @@ export default function Home({ navigation }) {
           style={{ ...styles.modal, ...styles.modalOther }}
           onPress={() => setOpenModal(false)}
         />
+          {/* <Text>Hey, I'm a modal</Text> */}
+          <ReviewForm addReviews={addReviews}/>
+        </View>
+        
+        
       </Modal>
 
       <AntDesign
@@ -103,5 +123,8 @@ const styles = StyleSheet.create({
   },
   modalOther: {
     borderColor: "red",
+  },
+  modalContent: {
+    flex: 1,
   }
 });

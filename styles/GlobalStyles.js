@@ -10,9 +10,21 @@ export const GlobalStyles = StyleSheet.create({
         fontSize: 16,
         color: 'blue'
     },
+    headerText: {
+        fontFamily: 'nunito-semibold', 
+        fontSize: 20,
+        color: 'white'
+    },
     paragraph: {
         paddingVertical: 8,
         lineHeight: 8,
+    },
+    input: {
+        borderWidth: 1,
+        borderColor: '#ddd',
+        padding: 16,
+        marginTop: 24,
+        fontSize: 18,
     },
     header: {
         // backgroundColor: "green",
