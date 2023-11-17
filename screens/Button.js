@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     },
     text: {
         textAlign: 'center',
-        fontSize: 20,
+        fontSize: 16,
         color: 'white',
         textTransform: 'uppercase',
         fontFamily: 'nunito-extrabold'
